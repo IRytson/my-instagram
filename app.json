@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "my-instagram",
-    "slug": "my-instagram",
+    "name": "instagram-clone-live",
+    "slug": "instagram-clone-live",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

@@ -1,14 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Login from './src/auth/Login';
-import Index from './src/auth/Index';
-import Feed from './src/auth/Feed';
+import 'react-native-gesture-handler';
+import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import LoginRouters from './src/routes/login_routes';
 
 export default function App() {
   return (
-    //<Login/>
-    //<Index />
-    <Feed/>
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar style="auto" barStyle={'dark-content'} backgroundColor={'white'} />
+      <NavigationContainer>
+        <LoginRouters />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 
