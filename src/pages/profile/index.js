@@ -3,6 +3,8 @@ import { Button, Text, View , StyleSheet, Image,TouchableOpacity} from "react-na
 import AuthContext from "../../routes/auth_context";
 import { useState } from "react";
 
+
+
 import PrivateIcon from "../../../assets/profile/privateIcon.svg";
 import AccountList from "../../../assets/profile/AccountsList.svg";
 import User from "../../../assets/profile/User.svg";
@@ -16,16 +18,22 @@ import StoryVazio from "../../../assets/profile/storyvazio.svg";
 import StoryIcon from "../../../assets/feed/story.svg";
 
 
+const Drawer = createDrawerNavigator();
+const { signOut } = useContext(AuthContext);
 
 
-
-export default function Profile(has_storie) {
+export default function Profile(has_storie, navigation) {
     const [storie , setStorie] = useState(has_storie);
 
     return <View style = {styles.container}> 
+
+                {/* <NavigationContainer>
+                    <MeuDrawer />
+                </NavigationContainer> */}
+                
                 <View style = {styles.container_priv }>
                     <PrivateIcon style={{marginRight:7.5}}/>
-                    <Text style = {styles.text_principal}>lazim_13o</Text>
+                    <Text style = {styles.text_principal}>Jacob_W</Text>
                     <AccountList style={{marginLeft:6}}/>
                 </View>
 
@@ -56,7 +64,7 @@ export default function Profile(has_storie) {
                 </View>
 
                 <View style={{marginTop:12 , marginRight:140}}>
-                    <Text style = {styles.text_principal}>Lázaro Rytson</Text>
+                    <Text style = {styles.text_principal}>Jacob_W</Text>
                     <Text style = {styles.text}>Digital goodies designer @pixsellz </Text>
                     <Text style = {styles.text}>Everything is designed.</Text>
                 </View>
@@ -95,14 +103,37 @@ export default function Profile(has_storie) {
 
             </View>
 
+        function TelaPrincipal({ navigation }) {
+            return (
+            <View>
+                <Text>Tela principal</Text>
+                <Menu title="Abrir Drawer" onPress={() => navigation.openDrawer()} />
+            </View>
+            );
+        }          
+          function Logout() {
+            return (
+                <View style={{ backgroundColor: 'white' }}>
+                     <Button onPress={() => { signOut() }} title={"Logout"} />
+                </View>
+            );
+          }
+          
+          function MeuDrawer() {
+            return (
+              <Drawer.Navigator>
+                <Drawer.Screen name="TelaPrincipal" component={TelaPrincipal} />
+                <Drawer.Screen name="TelaConfiguracoes" component={Logout} />
+              </Drawer.Navigator>
+            );
+          }
+          
             
 
 
     // const { signOut } = useContext(AuthContext);
 
-    // return <View style={{ backgroundColor: 'white' }}>
-    //     <Button onPress={() => { signOut() }} title={"Logout"} />
-    // </View>
+    // return 
 
 }
 
