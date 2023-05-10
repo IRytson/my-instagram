@@ -5,6 +5,8 @@ import Auth from "../pages/auth";
 import Login from "../pages/login";
 import AuthContext from "./auth_context";
 import HomeScreenRouters from "./home_screen_routes";
+import { Alert } from "react-native";
+import { doLogin } from "../services/requests/users";
 
 const Stack = createStackNavigator();
 
@@ -20,15 +22,24 @@ export default function LoginRouters() {
     // }, []);
 
 
+    async function loginAction(data){
+        user = await doLogin(data.username,data.password)
+        if (user.length){
+            setisSignedIn(true);
+        }else{
+            setisSignedIn(false);
+            Alert.alert("Erro ao fazer Login","Usuário/Senha inválidos")
+        }
+    }
 
     const authContext = useMemo(() => ({
-        signIn: (data) => {
-            setisSignedIn(true);
-        },
+        signIn: (data) => 
+            loginAction(data),
         signOut: (data) => {
             setisSignedIn(false);
         }
     }), []);
+
 
     const LoginState = () => {
         return <Login onPress={() => {
