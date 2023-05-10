@@ -18,8 +18,8 @@ import StoryVazio from "../../../assets/profile/storyvazio.svg";
 import StoryIcon from "../../../assets/feed/story.svg";
 
 
-const Drawer = createDrawerNavigator();
-const { signOut } = useContext(AuthContext);
+
+
 
 
 export default function Profile(has_storie, navigation) {
